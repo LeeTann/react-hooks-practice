@@ -40,18 +40,47 @@ function App() {
   const [todos, setTodos] = useState([
     {
       text: 'Learn about React',
-      Complete: false
+      Complete: false,
+      id: 3,
+      importance: 92
     },
     {
       text: 'Walk the dog',
-      Complete: false
+      Complete: true,
+      id: 1,
+      importance: 88
     },
     {
       text: 'Go to the gym',
-      Complete: false
+      Complete: false,
+      id: 2,
+      importance: 100
     },
   ])
 
+  // //sort by id
+  // const sortByComplete = todos.sort(function(a, b) {
+  //   return a.id - b.id
+  // })
+
+  // console.log(sortByComplete)
+
+  // // sort alphabetically
+  // todos.sort(function(a,b) {
+  //   if(a.name > b.name) {
+  //     return 1; 
+  //   } else {
+  //     return -1;
+  //   }
+  // })
+  // console.log(todos)
+
+  todos.sort((a, b) => {
+    return b.importance > a.importance ? 1 : -1
+  })
+
+  console.log(todos)
+  
   const addTodo = text => {
     const newTodo = [...todos, { text }]
     setTodos(newTodo)
